@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        let rps = ['rock', 'paper', 'scissors'];
+        let play = prompt('Rock, Paper, or Scissors')
+        w = 0
+        l = 0
+        t = 0
+        function computerPlay() {
+            let compChoice = Math.floor(Math.random() * rps.length)
+            let compPlay = String(rps[compChoice])
+            return compPlay
+        }
+        function winner() {
+            let play = prompt('Rock, Paper, or Scissors')
+            if (play == 'scissors') {
+                if (compDec == 'rock') {
+                    console.log('You lost to the computer because they played rock!')
+                    l += 1
+                } else if (compDec == 'paper') {
+                    console.log('You won against the computer because they played paper!')
+                    w+= 1
+                } else {
+                    console.log('You tied! Try again')
+                    t += 1
+                }
+            }
+            if (play =='paper') {
+                if (compDec == 'scissors') {
+                    console.log('You lost to the computer because they played scissors!')
+                    l += 1
+                } else if (compDec == 'rock') {
+                    console.log('You won against the computer because they played rock!')
+                    w+= 1
+                } else {
+                    console.log('You tied! Try again')
+                    t += 1
+                }
+            }
+            if (play == 'rock') {
+                if (compDec == 'paper') {
+                    console.log('You lost to the computer because they played paper!')
+                    l += 1
+                } else if (compDec == 'scissors') {
+                    console.log('You won against the computer because they played scissors!')
+                    w+= 1
+                } else {
+                    console.log('You tied! Try again')
+                    t += 1
+                }
+            }
+        }
+        let compDec = computerPlay()
+        for (let i = 0; i < 5; i++) {
+            winner()
+        }
+        let record = `(${w},${l},${t})`
+        console.log(`Your record was ${record}`)
+    </script>
+</body>
+</html>
