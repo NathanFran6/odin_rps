@@ -4,65 +4,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h1 id="title">Rock, Paper, Scissors!</h1>
+        <div class="btn">
+            <button class="rock">Rock</button>
+            <button class="scissors">Scissors</button>
+            <button class="paper">Paper</button>
+        </div>
     <script>
-        let rps = ['rock', 'paper', 'scissors'];
-        let play = prompt('Rock, Paper, or Scissors')
+        const playRock = document.querySelector('.rock')
+        playRock.addEventListener('click', function() {
+            playPlay('rock')
+        })
+
+        const playScissors = document.querySelector('.scissors')
+        playScissors.addEventListener('click', function() {
+            playPlay('scissors')
+        })
+
+        const playPaper = document.querySelector('.paper')
+        playPaper.addEventListener('click', function() {
+            playPlay('paper')
+        })
+
+
+        record = document.createElement('div')
         w = 0
         l = 0
         t = 0
+
+        let rps = ['rock', 'paper', 'scissors'];
         function computerPlay() {
             let compChoice = Math.floor(Math.random() * rps.length)
             let compPlay = String(rps[compChoice])
+            console.log(compPlay + ': computer choice')
             return compPlay
         }
-        function winner() {
-            let play = prompt('Rock, Paper, or Scissors')
-            if (play == 'scissors') {
+        let compDec = computerPlay()
+        const results = document.querySelector('#title')
+        const game = document.createElement('div')
+        results.appendChild(game)
+        results.appendChild(record)
+
+        function winner(desc) {
+            if (desc == 'scissors') {
                 if (compDec == 'rock') {
                     console.log('You lost to the computer because they played rock!')
+                    game.textContent='You lost to the computer because they played rock!'
                     l += 1
                 } else if (compDec == 'paper') {
                     console.log('You won against the computer because they played paper!')
+                    game.textContent = 'You won against the computer because they played paper!'
                     w+= 1
                 } else {
                     console.log('You tied! Try again')
+                    game.textContent = 'You tied! Try again'
                     t += 1
                 }
             }
-            if (play =='paper') {
+            if (desc =='paper') {
                 if (compDec == 'scissors') {
                     console.log('You lost to the computer because they played scissors!')
+                    game.textContent = 'You lost against the computer because they played scissors!'
                     l += 1
                 } else if (compDec == 'rock') {
                     console.log('You won against the computer because they played rock!')
+                    game.textContent = 'You won against the computer because they played rock!'
                     w+= 1
                 } else {
                     console.log('You tied! Try again')
+                    game.textContent = 'You tied! Try again'
                     t += 1
                 }
             }
-            if (play == 'rock') {
+            if (desc == 'rock') {
                 if (compDec == 'paper') {
                     console.log('You lost to the computer because they played paper!')
+                    game.textContent = 'You lost to the computer because they played paper!'
                     l += 1
                 } else if (compDec == 'scissors') {
                     console.log('You won against the computer because they played scissors!')
+                    game.textContent = 'You won against the computer because they played scissors!'
                     w+= 1
                 } else {
                     console.log('You tied! Try again')
+                    game.textContent = 'You tied! Try again'
                     t += 1
                 }
             }
         }
-        let compDec = computerPlay()
-        for (let i = 0; i < 5; i++) {
-            winner()
+
+        function playPlay (desc0) {       
+            winner(desc0)
+            record.textContent = `(${w},${l},${t})`
         }
-        let record = `(${w},${l},${t})`
-        console.log(`Your record was ${record}`)
+
+        
     </script>
 </body>
 </html>

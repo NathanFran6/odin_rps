@@ -1,0 +1,22 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#title {
+    color:pink;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    display:flex;
+    gap:200px;
+    justify-content: center;
+}
+
+button {
+    width:200px;
+    height:100px;
+}
